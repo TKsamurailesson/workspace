@@ -12,6 +12,7 @@
   <body>
     <!-- ここにヘッダーを書いてください -->
     <header>
+
      <div class="header-logo">
        <%= link_to("Mybookmark", "/") %>
      </div>
@@ -27,6 +28,12 @@
       </li>
      </ul>
     </header>
+    <!-- flash[:notice]に代入されたメッセージを表示してください -->
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <!-- 各ビューファイルは以下のyieldに代入され、application.html.erbの一部となる -->
     <%= yield %>
   </body>
