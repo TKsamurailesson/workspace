@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workspace</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- ここにヘッダーを書いてください -->
+    <header>
+     <div class="header-logo">
+       <%= link_to("Mybookmark", "/") %>
+     </div>
+     <ul class="header-menus">
+       <li>
+         <%= link_to("Mybookmarkとは", "/about") %>
+       </li>
+      <li>
+        <%= link_to("bookmark一覧", "/posts/index") %>
+      </li>
+      <li>
+        <%= link_to("新規投稿", "/posts/new") %>
+      </li>
+     </ul>
+    </header>
+    <!-- 各ビューファイルは以下のyieldに代入され、application.html.erbの一部となる -->
+    <%= yield %>
+  </body>
+</html>
