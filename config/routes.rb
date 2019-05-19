@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   # updateアクションへのルーティングを追加してください
   post "users/:id/update" => "users#update"
   post "users/:id/destroy" => "users#destroy"
-  get "users/:id/check" => "users#check"
-
 
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"

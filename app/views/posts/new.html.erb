@@ -12,7 +12,7 @@
           <!-- <textarea>タグにname属性を追加してください -->
           <textarea name="content"><%= @post.content %></textarea>
           <input type="submit" value="投稿">
-          <%= link_to "ORキャンセルボタン", "/posts/index" %>
+          <%= link_to "キャンセル", "/posts/index", class: "form-cancel" %>
 
         </div>
       </div>
