@@ -56,5 +56,16 @@ class UsersController < ApplicationController
     redirect_to("/users/index")
   end
 
+  def login_form
+
+  end
+
+  def login
+
+  end
+
+  def list
+    @user = User.all
+  end
 
 end

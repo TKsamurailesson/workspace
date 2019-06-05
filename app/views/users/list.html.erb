@@ -1,0 +1,21 @@
+<table border = "1">
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>email</th>
+    <th>パスワード</th>
+    <th>ID作成日</th>
+    <th>登録情報の最終更新日時</th>
+    <th></th>
+  </tr>
+  <% @user.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.password %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+    </tr>
+    <% end %>
+</table>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  get "login" => "users#login_form"
+  post "login" => "users#login"
+
+
+  get "users/index" => "users#index"
+  get "users/list" => "users#list"
   get "users/signup" => "users#new"
   get "users/:id" => "users#show"
   post "users/create" => "users#create"
@@ -7,6 +12,7 @@ Rails.application.routes.draw do
   # updateアクションへのルーティングを追加してください
   post "users/:id/update" => "users#update"
   post "users/:id/destroy" => "users#destroy"
+
 
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"
