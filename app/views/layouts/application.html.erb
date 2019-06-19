@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Workspace</title>
+    <title>Mybookmark</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,25 +17,41 @@
      <div class="header-logo">
        <%= link_to("Mybookmark", "/") %>
      </div>
+
      <ul class="header-menus">
-       <li>
-         <%= link_to("Mybookmarkとは", "/about") %>
-       </li>
-       <li>
-        <%= link_to("bookmark一覧", "/posts/index") %>
-       </li>
-       <li>
-        <%= link_to("新規投稿", "/posts/new") %>
-       </li>
-       <li>
-        <%= link_to("ユーザー一覧", "/users/index") %>
-       </li>
-       <li>
-        <%= link_to("新規登録", "/users/signup") %>
-       </li>
-       <li>
-        <%= link_to("ログイン", "/login") %>
-       </li>
+        <% if @current_user %>
+          <li>
+            <!-- Log In中のユーザーの名前を表示し、詳細ページのリンクとなるように書き換えてください -->
+            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("bookmark一覧", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("新規投稿", "/posts/new") %>
+          </li>
+          <li>
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <!-- ログアウト用のリンクを追加してください -->
+            <%= link_to("ログアウト", "/logout" , {method: "post"}) %>
+          </li>
+
+        <% else %>
+          <!-- ログインしていない状態でヘッダーに表示するHTMLを貼り付けてください -->
+          <li>
+            <%= link_to("Mybookmarkとは", "/about") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+
+       <% end %>
+
 
 
      </ul>

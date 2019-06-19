@@ -1,6 +1,6 @@
 <table border = "1">
   <tr>
-    <th>id</th>
+    <th>ユーザーid</th>
     <th>name</th>
     <th>email</th>
     <th>パスワード</th>
@@ -17,5 +17,27 @@
       <td><%= user.created_at %></td>
       <td><%= user.updated_at %></td>
     </tr>
-    <% end %>
+  <% end %>
+
+
+  <tr>
+    <th>投稿id</th>
+    <th>content</th>
+    <th>ID作成日</th>
+    <th>登録情報の最終更新日時</th>
+    <th>ユーザーid</th>
+    <th></th>
+  </tr>
+  <% @post.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= post.content %></td>
+      <td><%= post.created_at %></td>
+      <td><%= post.updated_at %></td>
+      <td><%= post.user_id %></td>
+    </tr>
+  <% end %>
+
+
+
 </table>

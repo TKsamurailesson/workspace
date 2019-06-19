@@ -2,7 +2,18 @@
   <div class="container">
     <% @posts.each do |post| %>
       <div class="posts-index-item">
-        <%= link_to(post.content, "/posts/#{post.id}") %>
+        <div class="post-left">
+          <!-- ユーザーの画像が表示されるように、以下のsrcに値を追加してください -->
+          <%= post.id %>
+        </div>
+        <div class="post-right">
+          <%= post.content %>
+
+          <div class="post-user-name">
+            <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
+
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

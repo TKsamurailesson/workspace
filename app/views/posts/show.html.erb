@@ -1,6 +1,13 @@
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
+      <div class="post-user-name">
+        <!-- ユーザーの画像が表示されるように、以下のsrcの中を埋めてください -->
+        <img src="<%= "/user_images/#{@user.image_name}" %>">
+
+        <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
+        <%= link_to(@user.name, "/users/#{@user.id}") %>
+      </div>      
       <p>
         <%= link_to(@post.content, "#{@post.content}", target: :_blank) %>
 
@@ -8,11 +15,28 @@
       <div class="post-time">
         <%= @post.created_at %>
       </div>
+
+      <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <!-- アイコンが表示できるように、以下のlink_toメソッドを書き換えてください -->
+        <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+      <% else %>
+        <!-- アイコンが表示できるように、以下のlink_toメソッドを書き換えてください -->
+        <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn"></span>
+        <% end %>
+      <% end %>
+
+      <%= @likes_count %>
+
+
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
         <!-- destroyアクションへのリンクを作成してください -->
         <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
       </div>
+
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+<!-- 指定されたコードを貼り付けてください -->
 <div class="main user-show">
   <div class="container">
     <div class="user">
@@ -6,15 +7,22 @@
       <p><%= @user.email %></p>
       <% if @user.id == @current_user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
-        <%= link_to("削除", "/users/#{@user.id}/destroy",  {method: "post"}) %>
       <% end %>
     </div>
-    <!-- 以下の<% %>を使ってeach文を追加してください -->
-    <% @user.posts.each do |post| %>
-      <!-- 指定されたコードを貼り付けてください -->
+
+    <ul class="user-tabs">
+      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+
+    <!-- 変数@likesに対してeach文を用いてください -->
+    <% @likes.each do |like| %>
+      <!-- 変数postを定義してください -->
+      <% post = Post.find_by(id: like.post_id) %>
+
       <div class="posts-index-item">
         <div class="post-left">
-          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <img src="<%= "/user_images/top.jpg" %>">
         </div>
         <div class="post-right">
           <div class="post-user-name">
@@ -23,7 +31,7 @@
           <%= link_to(post.content, "/posts/#{post.id}") %>
         </div>
       </div>
-    <!-- 以下の<% %>を使ってeach文のendを追加してください -->
+    <!-- each文のendを追加してください -->
     <% end %>
   </div>
 </div>
