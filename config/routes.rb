@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
 
 
+  get "userhistories/list" => "userhistories#list"
+
+
   get "users/index" => "users#index"
   get "users/list" => "users#list"
   get "signup" => "users#new"

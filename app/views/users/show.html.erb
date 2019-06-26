@@ -7,6 +7,8 @@
       <% if @user.id == @current_user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
         <%= link_to("削除", "/users/#{@user.id}/destroy",  {method: "post"}) %>
+        <%= link_to("変更履歴", "/userhistories/list") %>
+
       <% end %>
     </div>
     <!-- 以下の<% %>を使ってeach文を追加してください -->

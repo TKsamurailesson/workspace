@@ -1,0 +1,15 @@
+<table border = "1">
+  <tr>
+    <th>変更日</th>
+    <th>変更後の名前</th>
+    <th>userid</th>
+  </tr>
+  <% @userhistory.each do |userhistory| %>
+    <tr>
+      <td><%= userhistory.created_at %></td>
+      <td><%= userhistory.name %></td>
+      <td><%= userhistory.user_id %></td>
+    </tr>
+  <% end %>
+
+</table>
