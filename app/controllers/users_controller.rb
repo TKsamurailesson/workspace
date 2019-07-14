@@ -4,7 +4,35 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update]}
 
+  require 'net/http'
+  require 'uri'
 
+  API_KEY = 'YOUR_API_KEY'
+
+
+  def sample
+
+    endpoint = URI.parse('https://api.apigw.smt.docomo.ne.jp/voiceText/v1/textToSpeech')
+    endpoint.query = 'APIKEY=' + API_KEY
+
+    request_body = {
+      'text'=>'こんにちは。本日の天気をお知らせします。',
+      'speaker'=>'takeru'
+    }
+
+    res = Net::HTTP.post_form(endpoint, request_body)
+
+    case res
+    when Net::HTTPSuccess
+      file_name = "docomo.wav"
+      File.binwrite(file_name, res.body)
+      `afplay docomo.wav` # Linuxならaplayやmpg123を使う
+      File.delete(file_name)
+    else
+      # res.value
+      puts "a"
+    end
+  end
 
   def index
     @users = User.all.order(created_at: :desc)

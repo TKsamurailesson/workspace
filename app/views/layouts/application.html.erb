@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="./app/assets/javascripts/test.js"></script>
   </head>
 
   <body>
@@ -33,9 +34,19 @@
           <li>
             <%= link_to("ユーザー一覧", "/users/index") %>
           </li>
-          <li>
+          <li class="logout">
             <!-- ログアウト用のリンクを追加してください -->
+            <p>logout</p>
+            <script>
+              $(document).ready(function() {
+                $(".logout").on("click", function() {
+                  window.open('https://www.sejuku.net/blog/');                  }
+                );
+              });
+
+            </script>
             <%= link_to("ログアウト", "/logout" , {method: "post"}) %>
+
           </li>
 
         <% else %>
@@ -64,5 +75,32 @@
     <% end %>
     <!-- 各ビューファイルは以下のyieldに代入され、application.html.erbの一部となる -->
     <%= yield %>
+
+
+    <h1>音声合成</h1>
+    <input class="text" value="Web Speech Synthesis API を使おう。" style="width: 80%; height: 40px; font-size: 40px;" />
+    <button onclick="speak()" style="height: 30px; width: 80px;">speak</button>
+
+    <script>
+    function speak(){
+    	var speak = new SpeechSynthesisUtterance();
+      speak.text = document.querySelector('.text').value;
+      speak.rate = 10;
+      speak.pitch = 0;
+
+      sleep(2000);
+      speechSynthesis.speak(speak);
+    }
+
+    function sleep(time){
+      var date_1 = new Date().getTime();
+      var date_2 = new Date().getTime();
+      while (date_2 < date_1 + time){
+        date_2 = new Date().getTime();
+      }
+      return;
+    };
+    </script>
+
   </body>
 </html>

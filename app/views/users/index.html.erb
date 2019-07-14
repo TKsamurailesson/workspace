@@ -1,6 +1,20 @@
 <div class="main users-index">
   <div class="container">
     <h1 class="users-heading">ユーザー一覧</h1>
+    <script>
+      $(document).ready(function() {
+        $(".users-heading").on("mouseover", function() {
+          $(".users-heading").text("jQuery稼働テスト(稼働中)");
+        });
+        $(".users-heading").on("mouseout", function() {
+          $(".users-heading").text("USERLIST");
+        });
+        $(".users-heading").on("click", function() {
+          window.confirm("これが確認ダイアログです。");
+        });
+      });
+    </script>
+
     <% @users.each do |user| %>
       <div class="users-index-item">
         <div class="user-left">

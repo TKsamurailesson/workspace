@@ -71,13 +71,13 @@ header {
 .header-logo {
   float: left;
   padding-left: 20px;
-  color: white;
+  color: red;
   font-size: 22px;
   line-height: 64px;
 }
 
 .header-logo a{
-  color: white;
+  color: red;
   font-size: 22px;
 }
 
@@ -97,7 +97,7 @@ header {
 .header-menus a {
   float: left;
   font-size: 13px;
-  color: white;
+  color: black;
 }
 
 .header-menus .fa {
@@ -165,7 +165,10 @@ header {
 }
 
 .about-img {
-  width: 84%;
+  margin-top : 70px ;
+  border : 10px solid maroon ;
+
+  width: 100%;
 }
 
 /* フォーム================================ */

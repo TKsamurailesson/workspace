@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get "userhistories/list" => "userhistories#list"
 
+  get "users/sample" => "users#sample"
 
   get "users/index" => "users#index"
   get "users/list" => "users#list"
